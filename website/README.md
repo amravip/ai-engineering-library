@@ -135,7 +135,7 @@ that the sitemap exists, that the Pagefind index exists, and that landing descri
 for WCAG 2.0 and 2.1 A and AA rules, checks for horizontal scrolling on phones, and captures a
 search result. Set `QA_OUT` for the screenshot folder and `CHROME_PATH` for Chrome.
 
-## Cloudflare Pages (prepared, not deployed)
+## Cloudflare Pages
 
 Create a Git-connected Pages project. Settings:
 
@@ -146,7 +146,7 @@ Create a Git-connected Pages project. Settings:
 | Build command | `npm run build` |
 | Build output directory | `dist` |
 | Environment variable | `NODE_VERSION` = `24` |
-| Environment variable | `SITE_URL` = the public address of the site (decision for the author) |
+| Environment variable | `SITE_URL` (optional): overrides the default address, `https://ai-engineering-library.pages.dev` |
 
 Set the install command to `npm ci` explicitly, so the committed lock file is used. Nothing in
 the repository creates or changes a Cloudflare project.
@@ -156,6 +156,8 @@ the repository creates or changes a Cloudflare project.
 Decided on 2026-11-08:
 
 - `REPO_URL` is `https://github.com/amravip/ai-engineering-library`.
+- The site is deployed by Cloudflare Pages (Git-connected, project `ai-engineering-library`) at
+  `https://ai-engineering-library.pages.dev`, which is the default `SITE_URL`.
 - Applied AI Engineering stays private until release: `online: false` in `books.yaml`. To
   preview it locally, set it to `true`, run the export and build, and set it back. Its
   generated pages stay in `.gitignore` either way.
@@ -181,7 +183,6 @@ Decided on 2026-11-08:
 
 Still open:
 
-- `SITE_URL` (above): set it once Cloudflare Pages assigns the address.
 - Subtitle for AI Harness Engineering: "Building Reliable Execution Environments for AI
   Agents", from the spec's naming example in §2.
 - Cover and figure files are generated, so they are gitignored with the pages. The homepage

@@ -6,5 +6,5 @@
 export const REPO_URL = 'https://github.com/amravip/ai-engineering-library';
 
 // The public address of the site, used for the sitemap and canonical links.
-// Set the SITE_URL environment variable when the site is deployed.
-export const SITE_URL = process.env.SITE_URL || 'http://localhost:4321';
+// The SITE_URL environment variable overrides it, for example for a custom domain.
+export const SITE_URL = process.env.SITE_URL || 'https://ai-engineering-library.pages.dev';
