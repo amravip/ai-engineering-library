@@ -1,0 +1,8 @@
+---
+import BookCard from './BookCard.astro';
+import { books } from '../lib/books.js';
+---
+
+<div class="book-grid">
+  {books.map((book) => <BookCard book={book} />)}
+</div>

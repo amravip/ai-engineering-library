@@ -1,0 +1,23 @@
+---
+import { chapterPages, isReadableOnline } from '../lib/books.js';
+
+const { slug } = Astro.props;
+const readable = await isReadableOnline(slug);
+const chapters = readable ? await chapterPages(slug) : [];
+---
+
+<h2>Chapters</h2>
+{readable ? (
+  <>
+    <ol class="chapter-list">
+      {chapters.map((chapter) => (
+        <li><a href={`/${chapter.id}/`}>{chapter.title}</a></li>
+      ))}
+    </ol>
+    <p>
+      The <a href={`/${slug}/how-to-use-the-code/`}>How to Use the Code</a> page explains where the files are and how to run them.
+    </p>
+  </>
+) : (
+  <p class="book-status">Reading online is not available yet.</p>
+)}

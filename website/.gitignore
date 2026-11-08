@@ -1,0 +1,14 @@
+# Build tools and output. Rebuilt by `npm run build`; never committed.
+node_modules/
+dist/
+.astro/
+.generated/
+.qa/
+*.log
+
+# Generated book content. The export script in the private workspace writes these for each
+# book with `online: true` in books.yaml. They stay out of git until the author has
+# authorised publication. To publish a book: remove its two lines below, then set
+# `online: true` in books.yaml. See website/README.md, "Publishing a book".
+src/content/docs/applied-ai-engineering/*.md
+public/books/applied-ai-engineering/

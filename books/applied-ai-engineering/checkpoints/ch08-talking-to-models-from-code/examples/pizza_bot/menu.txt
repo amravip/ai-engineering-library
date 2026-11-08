@@ -1,0 +1,10 @@
+Bella's Pizza - Menu
+
+Margherita       £9    vegetarian   tomato, mozzarella, basil
+Garden Veggie    £11   vegetarian   peppers, mushrooms, red onion, olives
+Four Cheese      £12   vegetarian   mozzarella, cheddar, parmesan, goat cheese
+Mushroom         £10   vegetarian   mushrooms, garlic, mozzarella
+Pepperoni        £11   meat         pepperoni, mozzarella
+Hawaiian         £11   meat         ham, pineapple, mozzarella
+BBQ Chicken      £13   meat         chicken, BBQ sauce, red onion
+Meat Feast       £14   meat         pepperoni, ham, sausage, beef

@@ -1,0 +1,188 @@
+# Metadata for every book in the AI Engineering Library. Single source for the
+# website; the export script (library/publishing/export_web.py, in the private
+# workspace) reads it too.
+#
+# online: true lets the export publish the book's reading pages. The export
+# writes them only when the author has authorised publication, and the book's
+# folder is then removed from website/.gitignore. See website/README.md.
+#
+# difficulty was set by the author on 2026-11-08; see the
+# website/README.md section "Decisions for the author".
+
+series: AI Engineering Library
+author: Ravi Pal
+
+books:
+  - slug: applied-ai-engineering
+    number: 1
+    title: Applied AI Engineering
+    subtitle: From Tokens to Agents with Python and Local Models
+    industry: Retail / Food
+    project: Pizza Store AI Assistant
+    difficulty: Introductory
+    description: >-
+      Follow one project, an assistant for Bella's Pizza, from a first question to a
+      local model to an agent that checks orders and answers from the shop's documents.
+      Every program runs on your own computer through Ollama.
+    outcomes:
+      - Explain what happens between typing a question and an AI agent acting on it.
+      - Call a local language model from plain Python, and read exactly what is sent and returned.
+      - Explain tokens, embeddings, attention and temperature in plain words, with working code.
+      - Ground an answer in documents, and check it, knowing that a fluent answer proves nothing by itself.
+      - Give a model tools and an agent loop, and measure the result with a small evaluation.
+    online: false  # author decision 2026-11-08: keep the full text private until release
+
+  - slug: prompt-and-context-engineering
+    number: 2
+    title: Prompt & Context Engineering
+    industry: Travel / Hospitality
+    project: Travel Planning Assistant
+    difficulty: Intermediate
+    description: >-
+      Build a travel planning assistant for a travel and hospitality business, and learn
+      what to put in a model's request, and why it decides the answer.
+    outcomes:
+      - Decide when prompt or context engineering is the right fix, and when it is not.
+      - Design the context a model sees for a planning task.
+    online: false
+
+  - slug: rag-engineering
+    number: 3
+    title: RAG Engineering
+    industry: Enterprise / IT
+    project: Company Knowledge Assistant
+    difficulty: Intermediate
+    description: >-
+      Build a knowledge assistant for a company's documents. It finds the right passages
+      first, then lets the model answer from them.
+    outcomes:
+      - Decide when retrieval-augmented generation is the right design.
+      - Build a retrieval step and check the answers it supports.
+    online: false
+
+  - slug: ai-agent-engineering
+    number: 4
+    title: AI Agent Engineering
+    industry: Online Retail
+    project: E-commerce Customer Service Agent
+    difficulty: Intermediate
+    description: >-
+      Build a customer service agent for an online shop, one that decides when to use a
+      tool and when to answer directly.
+    outcomes:
+      - Decide when a single AI agent is the right design, and when it is not.
+      - Build an agent that uses tools and knows when to stop.
+    online: false
+
+  - slug: model-context-protocol
+    number: 5
+    title: Model Context Protocol
+    industry: Productivity / SaaS
+    project: Personal Productivity Assistant
+    difficulty: Intermediate
+    description: >-
+      Build a personal productivity assistant that connects a model to tools and data
+      through the Model Context Protocol.
+    outcomes:
+      - Decide when MCP integration is the right way to connect a model to outside tools.
+      - Connect a model to tools through a shared protocol instead of custom glue code.
+    online: false
+
+  - slug: ai-harness-engineering
+    number: 6
+    title: AI Harness Engineering
+    subtitle: Building Reliable Execution Environments for AI Agents
+    industry: Software Development
+    project: Software Engineering Agent
+    difficulty: Advanced
+    description: >-
+      Build a software engineering agent that works inside a controlled environment, with
+      safe file operations, command execution, sandboxing and verification.
+    outcomes:
+      - Decide when an agent needs a controlled harness around it.
+      - Make an agent's file and command actions safe, and verify its results.
+    online: false
+
+  - slug: multi-agent-systems
+    number: 7
+    title: Multi-Agent Systems
+    industry: Supply Chain
+    project: Logistics and Delivery Coordinator
+    difficulty: Advanced
+    description: >-
+      Build a delivery coordinator from several agents that work together, and learn when
+      splitting work across agents helps.
+    outcomes:
+      - Decide when multiple collaborating agents are the right design.
+      - Coordinate several agents so that each one has a clear job.
+    online: false
+
+  - slug: ai-agent-workflows
+    number: 8
+    title: AI Agent Workflows
+    industry: Insurance / Business Operations
+    project: Insurance Claims Processing
+    difficulty: Intermediate
+    description: >-
+      Build a claims process that mixes fixed, deterministic steps with agent-assisted
+      steps. Consequential decisions stay under deterministic controls and human review.
+    outcomes:
+      - Decide when a deterministic workflow is better than an agent.
+      - Place human review where a consequential decision is made.
+    online: false
+
+  - slug: llmops
+    number: 9
+    title: LLMOps
+    industry: SaaS / Customer Service
+    project: Customer Support AI Platform
+    difficulty: Advanced
+    description: >-
+      Build a customer support AI platform and learn how to run it in production, with
+      monitoring and evaluation after launch.
+    outcomes:
+      - Monitor and evaluate an AI feature after it is launched.
+      - Judge a change to a model or prompt by measured results.
+    online: false
+
+  - slug: ai-security
+    number: 10
+    title: AI Security
+    industry: Banking / Financial Services
+    project: Banking Support Assistant
+    difficulty: Advanced
+    description: >-
+      Build a banking support assistant with fictional data, and learn the security and
+      governance an AI system needs beyond a working prototype.
+    outcomes:
+      - Identify security and governance needs that go beyond a working prototype.
+      - Protect an AI feature that handles sensitive customer information.
+    online: false
+
+  - slug: ai-system-design
+    number: 11
+    title: AI System Design
+    industry: Enterprise Technology
+    project: Enterprise AI Platform
+    difficulty: Advanced
+    description: >-
+      Design an enterprise AI platform with a scalable architecture, using realistic
+      architecture without requiring expensive cloud infrastructure.
+    outcomes:
+      - Choose a scalable enterprise architecture for an AI system.
+      - Weigh the trade-offs between architecture options for a given business problem.
+    online: false
+
+  - slug: multimodal-ai
+    number: 12
+    title: Multimodal AI
+    industry: Manufacturing / Quality Control
+    project: Product Inspection Assistant
+    difficulty: Intermediate
+    description: >-
+      Build a product inspection assistant that works with images as well as text, using
+      local models whose abilities have been verified.
+    outcomes:
+      - Use multimodal AI capabilities in an application.
+      - Choose local models whose abilities have been verified for the task.
+    online: false

@@ -1,0 +1,12 @@
+Question: What vegetarian pizzas do you have? Answer: We have Margherita, Garden Veggie, Four Cheese and Mushroom.
+Question: How much is a Margherita? Answer: A Margherita is £9.
+Question: How much is the Pepperoni? Answer: The Pepperoni is £11.
+Question: What is on the Hawaiian? Answer: The Hawaiian has ham, pineapple and mozzarella.
+Question: What is the cheapest pizza? Answer: The Margherita is the cheapest pizza at £9.
+Question: What is the most expensive pizza? Answer: The Meat Feast is the most expensive pizza at £14.
+Question: Do you have a pizza with chicken? Answer: We have a BBQ Chicken pizza for £13.
+Question: What is on the Mushroom pizza? Answer: The Mushroom pizza has mushrooms, garlic and mozzarella.
+Question: Which pizzas have meat? Answer: We have Pepperoni, Hawaiian, BBQ Chicken and Meat Feast.
+Question: What vegetarian pizza has olives? Answer: The Garden Veggie pizza has olives.
+Question: How much is the Four Cheese? Answer: The Four Cheese is £12.
+Question: What is on the Meat Feast? Answer: The Meat Feast has pepperoni, ham, sausage and beef.

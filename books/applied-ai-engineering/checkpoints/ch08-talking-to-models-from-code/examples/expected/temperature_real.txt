@@ -1,0 +1,13 @@
+Name, temperature 0.0:
+   Margherita Bella Special
+   Mozzarella Dreamtopia
+   Mozzarella Dreamtopia
+Name, temperature 1.2:
+   Margherita Bella Special
+   Margherita's Delight
+   BellaBlastizza
+Total, temperature 0.0: £29
+Total, temperature 1.2: £29
+Name, temperature 1.2, seed 1, twice:
+   BellaBurgersizza
+   BellaBurgersizza

@@ -1,0 +1,24 @@
+---
+import { coverUrl, isReadableOnline } from '../lib/books.js';
+
+const { book } = Astro.props;
+const cover = coverUrl(book.slug);
+const readable = await isReadableOnline(book.slug);
+const status = readable
+  ? 'Read online'
+  : book.online
+    ? 'Reading online is not available yet'
+    : 'In preparation';
+const image = cover ?? `/cards/${book.slug}.svg`;
+---
+
+<a class="book-card" href={`/${book.slug}/`}>
+  <img src={image} alt={cover ? `Cover of ${book.title}` : ''} width="400" height="640" decoding="async" />
+  <div class="book-card-body">
+    <p class="book-card-meta">Volume {book.number} · {book.difficulty}</p>
+    <h3>{book.title}</h3>
+    <p class="book-card-project">{book.project}</p>
+    <p class="book-card-desc">{book.description}</p>
+    <p class="book-card-status">{status}</p>
+  </div>
+</a>

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Secrets and local configuration
+.env
+.env.*
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Authoring material. It is kept in a private workspace and never belongs in this repository.
+manuscript/
+reviews/
+planning/
+cover/
+dist/
+*.epub
+*.pdf
+
+# Website build tools and output (website/README.md)
+node_modules/
+website/.astro/
+website/dist/

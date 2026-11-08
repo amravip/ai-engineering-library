@@ -1,0 +1,15 @@
+---
+// Starlight's footer (edit link, pagination) followed by the licence notice.
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+<p class="site-licence">Book text © 2026 Ravi Pal. All rights reserved. Code examples are licensed under the MIT License.</p>
+
+<style>
+  .site-licence {
+    margin-top: 2.5rem;
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>
