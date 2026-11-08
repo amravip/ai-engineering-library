@@ -155,7 +155,8 @@ the repository creates or changes a Cloudflare project.
 
 Decided on 2026-11-08:
 
-- `REPO_URL` is `https://github.com/amravip/ai-engineering-library`.
+- The repository is `https://github.com/amravip/ai-engineering-library`. It is private, so
+  `REPO_URL` stays empty and the site shows no repository links until it is made public.
 - The site is deployed by Cloudflare Pages (Git-connected, project `ai-engineering-library`) at
   `https://ai-engineering-library.pages.dev`, which is the default `SITE_URL`.
 - Applied AI Engineering stays private until release: `online: false` in `books.yaml`. To
