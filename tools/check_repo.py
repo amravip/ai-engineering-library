@@ -13,32 +13,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 THIS_FILE = Path(__file__).resolve()
 
-# Folder slug and exact title, in catalogue order.
-BOOKS = [
-    ("applied-ai-engineering", "Applied AI Engineering"),
-    ("prompt-and-context-engineering", "Prompt & Context Engineering"),
-    ("rag-engineering", "RAG Engineering"),
-    ("ai-agent-engineering", "AI Agent Engineering"),
-    ("model-context-protocol", "Model Context Protocol"),
-    ("ai-harness-engineering", "AI Harness Engineering"),
-    ("multi-agent-systems", "Multi-Agent Systems"),
-    ("ai-agent-workflows", "AI Agent Workflows"),
-    ("llmops", "LLMOps"),
-    ("ai-security", "AI Security"),
-    ("ai-system-design", "AI System Design"),
-    ("multimodal-ai", "Multimodal AI"),
-]
+LEARNING_PATH = ROOT / "pizza-bot"
+STEP_FOLDER = re.compile(r"^\d{2}-[a-z0-9-]+$")
 
-# Folders that hold authoring material and must never appear in this repository.
-FORBIDDEN_FOLDERS = {"manuscript", "reviews", "planning", "cover", "dist"}
+# Folders that hold drafts, other projects or build output, and must never appear in this repository.
+FORBIDDEN_FOLDERS = {"manuscript", "reviews", "planning", "cover", "dist", "books", "website"}
 FORBIDDEN_FILE_SUFFIXES = {".epub", ".pdf"}
 FORBIDDEN_FILE_NAMES = {".env"}
 
-SKIPPED_FOLDERS = {".git", "__pycache__", ".pytest_cache", ".ruff_cache", ".venv", "venv",
-                   "node_modules", ".astro"}
-# Build output of the website. It is gitignored, rebuilt by `npm run build`, and never committed.
-SKIPPED_PATHS = {("website", "dist")}
+SKIPPED_FOLDERS = {".git", "__pycache__", ".pytest_cache", ".ruff_cache", ".venv", "venv", "node_modules"}
 PLACEHOLDER_PATTERN = re.compile(r"\b(TODO|TBD|FIXME|placeholder)\b", re.IGNORECASE)
+# The examples are code only. None of these words belongs in any text file, plurals included.
+WORDING_PATTERN = re.compile(r"\b(books?|chapters?|listings?|volumes?|editions?|appendix|appendices)\b", re.IGNORECASE)
 
 
 def repository_files() -> list[Path]:
@@ -48,32 +34,39 @@ def repository_files() -> list[Path]:
         relative_parts = path.relative_to(ROOT).parts
         if SKIPPED_FOLDERS & set(relative_parts):
             continue
-        if relative_parts[:2] in [tuple(item) for item in SKIPPED_PATHS]:
-            continue
         if path.is_file():
             files.append(path)
     return sorted(files)
 
 
-def check_book_folders(problems: list[str]) -> None:
-    for slug, title in BOOKS:
-        readme = ROOT / "books" / slug / "README.md"
-        if not readme.is_file():
-            problems.append(f"missing books/{slug}/README.md")
-        elif title not in readme.read_text(encoding="utf-8"):
-            problems.append(f"books/{slug}/README.md does not mention its title '{title}'")
+def step_folders() -> list[Path]:
+    return sorted(p for p in LEARNING_PATH.iterdir() if p.is_dir() and STEP_FOLDER.match(p.name))
 
 
-def check_checkpoints(problems: list[str]) -> None:
-    for checkpoint in sorted((ROOT / "books").glob("*/checkpoints/*")):
-        if not checkpoint.is_dir():
-            continue
-        relative = checkpoint.relative_to(ROOT).as_posix()
-        if not (checkpoint / "README.md").is_file():
+def check_learning_path(problems: list[str]) -> None:
+    if not (LEARNING_PATH / "README.md").is_file():
+        problems.append("missing pizza-bot/README.md")
+    if not (LEARNING_PATH / "requirements-dev.txt").is_file():
+        problems.append("missing pizza-bot/requirements-dev.txt")
+    steps = step_folders()
+    if not steps:
+        problems.append("no step folders (NN-name) in pizza-bot/")
+    for step in steps:
+        relative = step.relative_to(ROOT).as_posix()
+        if not (step / "README.md").is_file():
             problems.append(f"missing {relative}/README.md")
         for folder in ("examples", "tests"):
-            if not (checkpoint / folder).is_dir():
+            if not (step / folder).is_dir():
                 problems.append(f"missing {relative}/{folder}/")
+
+
+def check_exercises(problems: list[str]) -> None:
+    for exercise in sorted((LEARNING_PATH / "exercises").glob("*/")):
+        relative = exercise.relative_to(ROOT).as_posix()
+        if not (exercise / "README.md").is_file():
+            problems.append(f"missing {relative}/README.md")
+        if not (exercise / "tests").is_dir():
+            problems.append(f"missing {relative}/tests/")
 
 
 def check_forbidden_paths(files: list[Path], problems: list[str]) -> None:
@@ -88,19 +81,35 @@ def check_forbidden_paths(files: list[Path], problems: list[str]) -> None:
             problems.append(f"forbidden secrets file {relative.as_posix()}")
 
 
-def check_placeholders(files: list[Path], problems: list[str]) -> None:
+def read_text_files(files: list[Path]) -> list[tuple[Path, str]]:
+    """The text of every file that decodes as UTF-8. Binary files such as images are skipped."""
+    texts = []
     for path in files:
         if path == THIS_FILE:
             continue
         try:
-            text = path.read_text(encoding="utf-8")
+            texts.append((path, path.read_text(encoding="utf-8")))
         except UnicodeDecodeError:
-            continue  # binary file such as an image
+            continue
+    return texts
+
+
+def check_placeholders(texts: list[tuple[Path, str]], problems: list[str]) -> None:
+    for path, text in texts:
         for number, line in enumerate(text.splitlines(), start=1):
             match = PLACEHOLDER_PATTERN.search(line)
             if match:
                 relative = path.relative_to(ROOT).as_posix()
                 problems.append(f"'{match.group(0)}' text in {relative}:{number}")
+
+
+def check_wording(texts: list[tuple[Path, str]], problems: list[str]) -> None:
+    for path, text in texts:
+        for number, line in enumerate(text.splitlines(), start=1):
+            match = WORDING_PATTERN.search(line)
+            if match:
+                relative = path.relative_to(ROOT).as_posix()
+                problems.append(f"banned word '{match.group(0)}' in {relative}:{number}")
 
 
 def check_root_readme(problems: list[str]) -> None:
@@ -109,18 +118,20 @@ def check_root_readme(problems: list[str]) -> None:
         problems.append("missing README.md")
         return
     text = readme.read_text(encoding="utf-8")
-    for _, title in BOOKS:
-        if title not in text:
-            problems.append(f"README.md does not list '{title}'")
+    for step in step_folders():
+        if step.name not in text:
+            problems.append(f"README.md does not link to step '{step.name}'")
 
 
 def main() -> int:
     files = repository_files()
+    texts = read_text_files(files)
     problems: list[str] = []
-    check_book_folders(problems)
-    check_checkpoints(problems)
+    check_learning_path(problems)
+    check_exercises(problems)
     check_forbidden_paths(files, problems)
-    check_placeholders(files, problems)
+    check_placeholders(texts, problems)
+    check_wording(texts, problems)
     check_root_readme(problems)
 
     for problem in problems:
@@ -128,7 +139,7 @@ def main() -> int:
     if problems:
         print(f"{len(problems)} problem(s) found")
         return 1
-    print(f"Repository checks passed ({len(files)} files, {len(BOOKS)} books)")
+    print(f"Repository checks passed ({len(files)} files, {len(step_folders())} steps)")
     return 0
 
 

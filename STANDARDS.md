@@ -1,51 +1,48 @@
-# Development Standard
+# Development Standards
 
-This standard applies to the companion code of every book in the AI Engineering Library. It keeps the code of all twelve books consistent, so a reader who has finished one book can read the code of the next.
+These standards apply to the code in `pizza-bot/`. They keep every step consistent, so a reader who has finished one step can read the code of the next.
 
 ## Python
 
-- Python 3.10 or newer. The code is tested on Python 3.13. CI also runs the tests on Python 3.10.
-- Use the standard library first. Each book declares its few extra dependencies in a `requirements-dev.txt` file, which holds pytest for the tests.
-- Add a framework only when a chapter teaches it. Until then, the code uses plain functions, dictionaries and dataclasses.
+- Python 3.10 or newer. The code is tested on Python 3.13, and CI also runs the tests on Python 3.10.
+- Use the standard library first. `pizza-bot/requirements-dev.txt` holds the only test dependency, pytest.
+- Add a framework only when a step teaches it. Until then, use plain functions, dictionaries and dataclasses.
 
 ## Models and configuration
 
-- Ollama is the default model runtime. Examples call Ollama's HTTP API on the local computer.
+- Ollama is the model runtime. The examples call Ollama's HTTP API on the local computer.
 - Configuration comes from environment variables. There is no `.env` loader and no configuration framework.
-- The variables are `OLLAMA_BASE_URL` (default `http://localhost:11434`), plus the book's model variables. Those are defined and defaulted in the book's `model.py`. The Applied AI Engineering book uses `OLLAMA_MODEL` (default `qwen3:8b`) and `OLLAMA_EMBED_MODEL` (default `nomic-embed-text`).
-- A hosted provider may be offered as an option. It is never required to run the core examples or the tests.
+- The variables are `OLLAMA_BASE_URL` (default `http://localhost:11434`), `OLLAMA_MODEL` (default `qwen3:8b`) and `OLLAMA_EMBED_MODEL` (default `nomic-embed-text`). Each is defined and defaulted in the step's `model.py`.
+- A hosted provider may be offered as an option. It is never required to run the examples or the tests.
 
 ## Layout
 
-Every book follows this layout. Folders appear only when the book has code to put in them.
-
 ```text
-books/<slug>/
-├── README.md                    overview, requirements, configuration, how to run
+pizza-bot/
+├── README.md                    the learning path
 ├── requirements-dev.txt         test dependencies
-├── checkpoints/
-│   └── chNN-<topic>/            the complete project at the end of chapter NN
-│       ├── README.md            what exists, what the chapter adds, files new, changed or unchanged, commands, expected results
-│       ├── examples/            the project files; saved outputs in examples/expected/
-│       └── tests/               tests for the files in this checkpoint
+├── NN-<topic>/                  the complete project at the end of step NN
+│   ├── README.md                what the step adds, the files, the commands, the expected results
+│   ├── examples/                the project files; saved outputs in examples/expected/
+│   └── tests/                   tests for the files in this step
 └── exercises/
-    └── chNN/
-        ├── README.md            the chapter's exercises by number, and which need a live model
+    └── NN-<topic>/
+        ├── README.md            the exercises, and which ones need a live model
         ├── solutions/           code answers that can be tested
         └── tests/               tests for the solutions
 ```
 
-Names follow the book's own project. Use slugs and file names that describe the domain, such as `orders.py`, `check_order()` and `Order`, rather than abbreviations.
+Use names that describe the project's domain, such as `orders.py`, `check_order()` and `Order`, rather than abbreviations.
 
-## Checkpoints
+## Steps
 
-- A checkpoint is the complete project at the end of one chapter, so a reader can stop after any chapter and resume from it.
-- Each checkpoint lists its files as new, changed or unchanged, and says how to check that earlier behaviour still works.
-- The files in a checkpoint are verified copies of the book's code. A sync check confirms that they match the source.
+- A step is the complete project at the end of that step, so a reader can stop after any step and resume from it.
+- Each step README lists its files as New, Changed or Unchanged, and says how to check that earlier behaviour still works.
+- A file that is unchanged from an earlier step is identical to it.
 
 ## Code style
 
-- Small functions with meaningful names. Keep each function short enough to read in a printed book.
+- Small functions with meaningful names. Keep each function short enough to read on one screen.
 - Type hints on every function signature.
 - Explicit errors with messages a reader can act on.
 - Comments explain why, not what. Docstrings are one or two sentences.
@@ -55,25 +52,27 @@ Names follow the book's own project. Use slugs and file names that describe the 
 ## Testing
 
 - Unit tests use fakes. They never call a live model, the internet or a paid API.
-- Fake the model by replacing the function that calls Ollama, for example `chat` or `urlopen`, and check what was sent and how the reply is handled.
-- Live-model scripts are run by hand. Their saved outputs are real runs. They are labelled as real runs, record the model, the Ollama version and the date, and say that the wording will vary.
-- Scripts that call no model must print the same text on every run, and the saved output must match it exactly.
-- Regression tests keep earlier behaviour working when a later chapter changes a file.
+- Fake the model by replacing the function that calls Ollama, for example `chat` or `urlopen`. Then check what was sent and how the reply is handled.
+- Scripts that call a model are run by hand. Their saved outputs are real runs. Label them as real runs, record the model, the Ollama version and the date, and say that the wording will vary.
+- Scripts that call no model must print the same text on every run, and the saved output must match it exactly. Label that output as fixed output.
+- Regression tests keep earlier behaviour working when a later step changes a file.
+- The CI workflow sets `OLLAMA_BASE_URL` to a closed port, so a test that reaches for a live model fails.
 
 ## Self-containment
 
-- The book prints everything a reader needs: code, configuration, dependencies, setup commands, test code, data and expected output.
-- This repository mirrors the book's code. It is an optional convenience. Nothing in a book depends on it.
+- Each step prints everything a reader needs: the code, the configuration, the dependencies, the setup commands, the test code, the data and the expected output.
 - Setup assumes only the tools a reader installs: Python, Ollama, Python packages and the model files.
+
+## Wording
+
+- Plain, friendly English with short sentences. Use British spelling.
+- Say "step" for each part of the learning path.
+- Keep the example's story simple and familiar: Bella's Pizza, a small pizza shop.
 
 ## What never goes in this repository
 
-- Manuscripts, reviews, planning notes and drafts.
-- Cover sources and exports, figure sources, and built books in PDF or EPUB form.
-- Publishing tooling and build scripts.
 - Secrets, API keys and `.env` files.
-
-`.gitignore` blocks the common forms of these, and `tools/check_repo.py` fails the build if one of them is present.
+- Model files and generated build output.
 
 ## Checks
 
@@ -81,10 +80,10 @@ Run these from the repository root:
 
 ```bash
 python tools/check_repo.py
-python -m ruff check books tools
-python -m compileall -q books tools
-cd books/applied-ai-engineering/checkpoints/ch08-talking-to-models-from-code && python -m pytest -q
-cd ../../exercises/ch08 && python -m pytest -q
+python -m ruff check pizza-bot tools
+python -m compileall -q pizza-bot tools
+cd pizza-bot/13-shipping-it && python -m pytest -q
+cd ../exercises/08-structured-output && python -m pytest -q
 ```
 
-GitHub Actions runs the same steps on every push and pull request, on Python 3.10 and 3.13. The workflow sets `OLLAMA_BASE_URL` to a closed port, so a test that reaches for a live model fails.
+GitHub Actions runs the same checks on Python 3.10 and 3.13, for every push and pull request. The workflow uses no secrets and calls no model.

@@ -30,23 +30,19 @@ jobs:
       - name: Install ruff
         run: python -m pip install ruff==0.17.3
 
-      - name: Lint books and tools
-        run: python -m ruff check books tools
+      - name: Lint code and tools
+        run: python -m ruff check pizza-bot tools
 
       - name: Compile all Python files
-        run: python -m compileall -q books tools
+        run: python -m compileall -q pizza-bot tools
 
       - name: Install test dependencies
-        shell: bash
-        run: |
-          for requirements in books/*/requirements-dev.txt; do
-            python -m pip install -r "$requirements"
-          done
+        run: python -m pip install -r pizza-bot/requirements-dev.txt
 
-      - name: Test checkpoints
+      - name: Test each step
         shell: bash
         run: |
-          for dir in books/*/checkpoints/*/; do
+          for dir in pizza-bot/[0-9][0-9]-*/; do
             echo "::group::pytest in $dir"
             (cd "$dir" && python -m pytest -q)
             echo "::endgroup::"
@@ -55,7 +51,7 @@ jobs:
       - name: Test exercises
         shell: bash
         run: |
-          for dir in books/*/exercises/*/; do
+          for dir in pizza-bot/exercises/*/; do
             echo "::group::pytest in $dir"
             (cd "$dir" && python -m pytest -q)
             echo "::endgroup::"

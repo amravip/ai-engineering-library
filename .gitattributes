@@ -1,2 +1,2 @@
-# Keep every file byte-identical to the verified book code (no line-ending conversion).
+# Keep every file byte-identical to the reviewed source (no line-ending conversion).
 * -text

@@ -1,95 +1,120 @@
-# AI Engineering Library
+# AI Engineering Examples: Build a Pizza Shop Assistant with Local Models
 
-**Author: Ravi Pal**
+You build an assistant for a small pizza shop. It answers customer questions, reads orders, searches the shop's documents and checks its own answers. It runs on your own computer, with a local model.
 
-This is the companion code repository for the AI Engineering Library, a series of twelve books. Each book builds one realistic project with local AI models, one idea per chapter.
+The project has 13 steps. Each step adds one idea, and each step folder holds the complete code at that point.
 
-**Every book is self-contained.** Each book prints all the code, configuration, data, setup commands, tests and expected outputs that its exercises need. You do not need this repository to do the printed exercises. This repository is an **optional convenience**: it holds reference copies of the code, so you can compare your files with a known-good version.
+## The steps
 
-**None of the books is published yet.** All twelve are in preparation.
+| Step | What you learn | Folder |
+|---|---|---|
+| 1 | Ask a local model a question, and give it the facts | [01-first-conversation](pizza-bot/01-first-conversation/README.md) |
+| 2 | How a model reads text as tokens | [02-tokens](pizza-bot/02-tokens/README.md) |
+| 3 | Embeddings: search by meaning | [03-embeddings](pizza-bot/03-embeddings/README.md) |
+| 4 | Attention: each word looks at its neighbours | [04-attention](pizza-bot/04-attention/README.md) |
+| 5 | Training a tiny model by counting | [05-training](pizza-bot/05-training/README.md) |
+| 6 | Fine-tuning and the chat template | [06-fine-tuning](pizza-bot/06-fine-tuning/README.md) |
+| 7 | Temperature: how varied the answers are | [07-temperature](pizza-bot/07-temperature/README.md) |
+| 8 | Structured output, checked against the menu | [08-talking-to-models-from-code](pizza-bot/08-talking-to-models-from-code/README.md) |
+| 9 | The context window, and what a model forgets | [09-the-context-window](pizza-bot/09-the-context-window/README.md) |
+| 10 | Hallucination, and a checker for it | [10-hallucination](pizza-bot/10-hallucination/README.md) |
+| 11 | Retrieval-augmented generation (RAG) | [11-rag](pizza-bot/11-rag/README.md) |
+| 12 | Tools and agents | [12-tools-and-agents](pizza-bot/12-tools-and-agents/README.md) |
+| 13 | Measuring quality, tokens and time | [13-shipping-it](pizza-bot/13-shipping-it/README.md) |
 
-## Catalogue
+The [learning path](pizza-bot/README.md) describes each step in more detail. The [exercise for step 8](pizza-bot/exercises/08-structured-output/README.md) has code that you can test.
 
-| # | Book | Primary project | Industry | Status | Folder |
-|---|---|---|---|---|---|
-| 1 | Applied AI Engineering | Pizza Store AI Assistant | Retail / Food | In preparation; code for all 13 chapters available as checkpoints | [books/applied-ai-engineering](books/applied-ai-engineering/README.md) |
-| 2 | Prompt & Context Engineering | Travel Planning Assistant | Travel / Hospitality | In preparation | [books/prompt-and-context-engineering](books/prompt-and-context-engineering/README.md) |
-| 3 | RAG Engineering | Company Knowledge Assistant | Enterprise / IT | In preparation | [books/rag-engineering](books/rag-engineering/README.md) |
-| 4 | AI Agent Engineering | E-commerce Customer Service Agent | Online Retail | In preparation | [books/ai-agent-engineering](books/ai-agent-engineering/README.md) |
-| 5 | Model Context Protocol | Personal Productivity Assistant | Productivity / SaaS | In preparation | [books/model-context-protocol](books/model-context-protocol/README.md) |
-| 6 | AI Harness Engineering | Software Engineering Agent | Software Development | In preparation | [books/ai-harness-engineering](books/ai-harness-engineering/README.md) |
-| 7 | Multi-Agent Systems | Logistics and Delivery Coordinator | Supply Chain | In preparation | [books/multi-agent-systems](books/multi-agent-systems/README.md) |
-| 8 | AI Agent Workflows | Insurance Claims Processing | Insurance / Business Operations | In preparation | [books/ai-agent-workflows](books/ai-agent-workflows/README.md) |
-| 9 | LLMOps | Customer Support AI Platform | SaaS / Customer Service | In preparation | [books/llmops](books/llmops/README.md) |
-| 10 | AI Security | Banking Support Assistant | Banking / Financial Services | In preparation | [books/ai-security](books/ai-security/README.md) |
-| 11 | AI System Design | Enterprise AI Platform | Enterprise Technology | In preparation | [books/ai-system-design](books/ai-system-design/README.md) |
-| 12 | Multimodal AI | Product Inspection Assistant | Manufacturing / Quality Control | In preparation | [books/multimodal-ai](books/multimodal-ai/README.md) |
+## Requirements
 
-Only Applied AI Engineering has code in this repository so far. The other eleven folders contain a README that describes the planned layout.
-
-## Using this repository
-
-- Read the book's own folder README first. It explains the requirements, the configuration and how to run the tests.
-- Each checkpoint is the complete project at the end of one chapter. Start from the checkpoint for the chapter you are on, or compare your files with it.
-- Scripts that call a model need [Ollama](https://ollama.com) running on your computer. The default model is `qwen3:8b`. The address and model are set with environment variables, described in the Applied AI Engineering README.
-- The tests use fake models. They run without Ollama, without the internet and without any paid service.
-
-## Reader website
-
-The [website/](website/README.md) folder holds the reader website: a homepage with all twelve
-books, a landing page for each book, and the reading pages of Applied AI Engineering. It is
-built with Astro and Starlight, and it is static. To build it locally:
+- Python 3.10 or newer. The code is tested on Python 3.13.
+- [Ollama](https://ollama.com), running on your computer.
+- The model `qwen3:8b`, which is about 5.2 GB. On a computer with 8 GB of memory, use `qwen3:1.7b` instead.
+- The embedding model `nomic-embed-text` (274 MB), which you need from step 3.
 
 ```bash
-cd website
-npm ci
-npm run check    # build, then the link and metadata checks
+ollama pull qwen3:8b
+ollama pull nomic-embed-text
 ```
 
-Only Applied AI Engineering has reading pages, and only when the author has authorised their
-publication. Without them, the site builds and says that reading online is not yet available.
+## Quick start
 
-## Repository layout
+1. Get the code. Clone this repository, or choose **Code** and then **Download ZIP** on GitHub, and unzip it.
+2. Open the first step's project folder.
 
-```text
-ai-engineering-library/
-├── README.md                     this catalogue
-├── STANDARDS.md                  the shared development standard
-├── ruff.toml                     lint rules used by CI
-├── tools/
-│   └── check_repo.py             layout and wording checks used by CI
-├── website/                      the reader website (see website/README.md)
-├── .github/workflows/validate.yml
-├── .github/workflows/website.yml
-└── books/
-    ├── applied-ai-engineering/
-    │   ├── README.md
-    │   ├── requirements-dev.txt
-    │   ├── checkpoints/ch01-first-conversation/ … ch13-shipping-it/
-    │   └── exercises/ch08/
-    └── <the other eleven books>/
-        └── README.md
+   ```bash
+   cd pizza-bot/01-first-conversation/examples/pizza_bot
+   ```
+
+3. Ask the model a question. Ollama must be running.
+
+   ```bash
+   python ask.py
+   ```
+
+The answer may name pizzas that are not on the menu. Step 1 explains why, and shows how to fix it.
+
+## Configuration
+
+The scripts read three environment variables. If you do not set them, the defaults below are used.
+
+| Variable | Default | What it sets |
+|---|---|---|
+| `OLLAMA_BASE_URL` | `http://localhost:11434` | The address of the Ollama server |
+| `OLLAMA_MODEL` | `qwen3:8b` | The model for chat answers |
+| `OLLAMA_EMBED_MODEL` | `nomic-embed-text` | The model for embeddings, from step 3 |
+
+To use the smaller model, set the variable before you run a script.
+
+```powershell
+$env:OLLAMA_MODEL = "qwen3:1.7b"
 ```
-
-## Checks
 
 ```bash
-python tools/check_repo.py
-python -m ruff check books tools
-python -m compileall -q books tools
+export OLLAMA_MODEL=qwen3:1.7b
 ```
 
-To run the tests for one chapter of Applied AI Engineering (here, Chapter 13, the complete project):
+Your answers will differ from the saved outputs when you use a different model.
+
+## Running the tests
+
+The tests use fake models, so you do not need Ollama, the internet or a paid service. Install the test tool once, from the repository folder.
 
 ```bash
-cd books/applied-ai-engineering
-python -m pip install -r requirements-dev.txt
-cd checkpoints/ch13-shipping-it && python -m pytest -q
-cd ../../exercises/ch08 && python -m pytest -q
+python -m pip install -r pizza-bot/requirements-dev.txt
 ```
 
-GitHub Actions runs these checks on Python 3.10 and 3.13 for every push and pull request. The workflow uses no secrets and calls no model.
+Then run the tests in any step folder.
+
+```bash
+cd pizza-bot/13-shipping-it
+python -m pytest -q
+```
+
+The result should be `50 passed`. Each later step includes the tests of the earlier steps.
+
+## How the steps work
+
+Each step folder is the complete project at the end of that step. You can work in two ways:
+
+- Start from the step before. Copy its `examples/` and `tests/` folders, then follow the step's README.
+- Open the step you need, and compare your files with it.
+
+Each step README marks every file as New, Changed or Unchanged, so you can see what the step adds.
+
+## Troubleshooting
+
+**Connection refused.** The script stops with an error that includes `Connection refused`. On Windows, the message can read `No connection could be made because the target machine actively refused it`. Ollama is not running. Start the Ollama app, or run `ollama serve` in a terminal, and then run the script again. The tests do not need Ollama, so they still pass when it is stopped.
+
+**Windows shows an error for the £ sign.** The script stops with `UnicodeEncodeError`. Tell Python to use UTF-8 for this terminal, and then run the script again.
+
+```powershell
+$env:PYTHONIOENCODING = "utf-8"
+```
+
+In Command Prompt, use `set PYTHONIOENCODING=utf-8`.
+
+**The model is slow or runs out of memory.** Use the smaller model, as shown in the configuration section.
 
 ## Licence
 
-The code in this repository is released under the [MIT License](LICENSE). The books themselves are not in this repository; their text is © Ravi Pal, all rights reserved. The fonts in `website/public/fonts` are under the SIL Open Font License, as noted beside each file.
+The code is released under the [MIT Licence](LICENSE).
