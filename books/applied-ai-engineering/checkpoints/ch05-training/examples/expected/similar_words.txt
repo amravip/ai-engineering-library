@@ -1,0 +1,9 @@
+Numbers per word: 768
+0.70  vegetarian
+0.53  meat-free
+0.52  plant-based
+0.47  mushroom
+0.46  pepperoni
+0.43  delivery
+0.39  invoice
+0.28  Paris

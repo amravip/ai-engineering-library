@@ -1,0 +1,7 @@
+                 veggie vegetarian margherita  pepperoni   delivery     driver
+veggie             1.00       1.00       0.99       0.71       0.07       0.00
+vegetarian         1.00       1.00       0.99       0.67       0.07       0.00
+margherita         0.99       0.99       1.00       0.78       0.08       0.00
+pepperoni          0.71       0.67       0.78       1.00       0.10       0.00
+delivery           0.07       0.07       0.08       0.10       1.00       1.00
+driver             0.00       0.00       0.00       0.00       1.00       1.00

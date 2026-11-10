@@ -12,7 +12,7 @@ This is the companion code repository for the AI Engineering Library, a series o
 
 | # | Book | Primary project | Industry | Status | Folder |
 |---|---|---|---|---|---|
-| 1 | Applied AI Engineering | Pizza Store AI Assistant | Retail / Food | In preparation; sample checkpoint for Chapter 8 available | [books/applied-ai-engineering](books/applied-ai-engineering/README.md) |
+| 1 | Applied AI Engineering | Pizza Store AI Assistant | Retail / Food | In preparation; code for all 13 chapters available as checkpoints | [books/applied-ai-engineering](books/applied-ai-engineering/README.md) |
 | 2 | Prompt & Context Engineering | Travel Planning Assistant | Travel / Hospitality | In preparation | [books/prompt-and-context-engineering](books/prompt-and-context-engineering/README.md) |
 | 3 | RAG Engineering | Company Knowledge Assistant | Enterprise / IT | In preparation | [books/rag-engineering](books/rag-engineering/README.md) |
 | 4 | AI Agent Engineering | E-commerce Customer Service Agent | Online Retail | In preparation | [books/ai-agent-engineering](books/ai-agent-engineering/README.md) |
@@ -65,7 +65,7 @@ ai-engineering-library/
     ├── applied-ai-engineering/
     │   ├── README.md
     │   ├── requirements-dev.txt
-    │   ├── checkpoints/ch08-talking-to-models-from-code/
+    │   ├── checkpoints/ch01-first-conversation/ … ch13-shipping-it/
     │   └── exercises/ch08/
     └── <the other eleven books>/
         └── README.md
@@ -79,12 +79,12 @@ python -m ruff check books tools
 python -m compileall -q books tools
 ```
 
-To run the Chapter 8 tests:
+To run the tests for one chapter of Applied AI Engineering (here, Chapter 13, the complete project):
 
 ```bash
 cd books/applied-ai-engineering
 python -m pip install -r requirements-dev.txt
-cd checkpoints/ch08-talking-to-models-from-code && python -m pytest -q
+cd checkpoints/ch13-shipping-it && python -m pytest -q
 cd ../../exercises/ch08 && python -m pytest -q
 ```
 

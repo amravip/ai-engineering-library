@@ -1,0 +1,3 @@
+'Hi!': 18 tokens in, 12 tokens out, 3.5 s (Ollama total_duration 1.4 s)
+'What vegetarian pizzas do you have? Answer in one sentence.': 28 tokens in, 25 tokens out, 4.8 s (Ollama total_duration 2.8 s)
+'Explain in detail how to make a pizza dough from scratch.': 29 tokens in, 1214 tokens out, 133.1 s (Ollama total_duration 131.0 s)

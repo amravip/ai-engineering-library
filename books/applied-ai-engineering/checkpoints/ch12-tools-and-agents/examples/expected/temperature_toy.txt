@@ -1,0 +1,17 @@
+After "the" at temperature 0.2: margherita 38%, pizza 38%, pepperoni 9%, mushroom 9%, four 1%
+After "the" at temperature 1.0: margherita 13%, pizza 13%, pepperoni 9%, mushroom 9%, four 6%
+After "the" at temperature 2.0: margherita 9%, pizza 9%, pepperoni 8%, mushroom 8%, four 6%
+
+Five sentences at temperature 0.2:
+  the margherita was perfect with ham and the pizza
+  the margherita was perfect with ham and the margherita
+  the pizza was perfect with goat cheese pizza was
+  the margherita was perfect with fresh peppers and the
+  the pizza was perfect with goat cheese pizza was
+
+Five sentences at temperature 1.5:
+  the mushroom pizza arrived hot and mushrooms
+  the margherita great margherita great margherita was stringy and
+  the pizza was cold when it arrived which was
+  the best pizza was crispy
+  the mushroom pizza was worth the four cheese pizza

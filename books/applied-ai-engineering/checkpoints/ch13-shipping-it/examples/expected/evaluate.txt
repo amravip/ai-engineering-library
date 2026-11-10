@@ -1,0 +1,18 @@
+PASS  What vegetarian pizzas do you have?
+PASS  How much is a Meat Feast?
+FAIL  Which pizza has pineapple?
+      answer: The documents provided do not specify which pizza has pineapple. [old_menu.txt][allergens.txt]
+PASS  What time do you open on Sunday?
+PASS  How much does delivery cost?
+PASS  Do you have gluten-free bases?
+PASS  Can I use two vouchers on one order?
+  model asked for check_order({'order_number': 7})
+  tool returned {"number": 7, "pizzas": ["Pepperoni", "Margherita"], "total": 20, "status": "out for delivery"}
+PASS  Where is my order #7?
+  model asked for check_order({'order_number': 3})
+  tool returned {"number": 3, "pizzas": ["Garden Veggie"], "total": 11, "status": "delivered"}
+PASS  What is the total for order #3?
+  model asked for check_order({'order_number': 99})
+  tool returned {"error": "No order with number 99"}
+PASS  Is order #99 on its way?
+Score: 9/10

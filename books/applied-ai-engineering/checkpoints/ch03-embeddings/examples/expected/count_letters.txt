@@ -1,0 +1,4 @@
+'r' in 'Margherita': model says 2, Python says 2  (right)
+'z' in 'mozzarella': model says 1, Python says 2  (WRONG)
+'e' in 'pepperoni': model says 3, Python says 2  (WRONG)
+'s' in 'Four Cheese, Mushroom, Hawaiian': model says 5, Python says 2  (WRONG)

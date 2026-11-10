@@ -1,0 +1,7 @@
+Customer: What vegetarian pizzas do you have?
+Bot: We have the following vegetarian pizzas:
+
+- Margherita (£9) - tomato, mozzarella, basil  
+- Garden Veggie (£11) - peppers, mushrooms, red onion, olives  
+- Four Cheese (£12) - mozzarella, cheddar, parmesan, goat cheese  
+- Mushroom (£10) - mushrooms, garlic, mozzarella

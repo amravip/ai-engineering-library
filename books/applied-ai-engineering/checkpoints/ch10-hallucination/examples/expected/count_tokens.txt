@@ -1,0 +1,11 @@
+Model: qwen3:8b
+  1 tokens  'pizza'
+  3 tokens  'Margherita'
+  2 tokens  'mozzarella'
+  4 tokens  'Pepperoni pizza'
+  7 tokens  'What vegetarian pizzas do you have?'
+
+Bella's menu:
+   556 characters
+    62 words
+   153 tokens

@@ -1,0 +1,10 @@
+Words the model knows: 97
+After "the": margherita 12%, pizza 12%, pepperoni 9%, mushroom 9%
+After "pizza": was 33%, is 14%, had 10%, with 10%
+After "was": perfect 12%, crispy 6%, fast 6%, still 6%
+
+Greedy text: the margherita was perfect with fresh basil and the margherita was perfect with
+
+Average surprise on the 5 held-out reviews:
+  before training: 4.70
+  after training:  3.47

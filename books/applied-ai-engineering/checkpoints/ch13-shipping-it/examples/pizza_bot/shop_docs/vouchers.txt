@@ -1,0 +1,5 @@
+Bella's Pizza - Vouchers
+
+A voucher takes £5 off an order of £20 or more.
+Only one voucher can be used per order.
+Vouchers cannot be swapped for cash.

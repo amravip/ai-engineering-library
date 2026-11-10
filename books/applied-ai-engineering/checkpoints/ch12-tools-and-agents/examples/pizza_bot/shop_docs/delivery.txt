@@ -1,0 +1,6 @@
+Bella's Pizza - Delivery
+
+We deliver within three miles of the shop.
+Delivery costs £3, and is free on orders over £25.
+Most deliveries arrive within 40 minutes.
+We do not deliver after closing time.

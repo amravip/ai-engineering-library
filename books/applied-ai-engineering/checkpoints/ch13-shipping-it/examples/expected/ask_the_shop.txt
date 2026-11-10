@@ -1,0 +1,12 @@
+Customer: What time do you open on Sunday?
+Bot: We open at 12 noon on Sunday. [opening_hours.txt]
+
+Customer: Is anything on the menu safe for someone with a nut allergy?
+Bot: Our kitchen handles nuts, so we cannot promise any pizza is nut free. The pesto sauce on special pizzas contains pine nuts. If you have a nut allergy, please inform us when you order so we can make appropriate arrangements. [allergens.txt]
+
+Customer: My pizza came 45 minutes late. Can I get a refund?
+Bot: Yes, if your pizza arrived more than 30 minutes late, we refund the delivery charge. [refunds.txt]
+
+Customer: Do you have a gluten-free base?
+Bot: No, we do not offer gluten-free bases. Every pizza is made on a wheat dough base. [gluten_free.txt]
+

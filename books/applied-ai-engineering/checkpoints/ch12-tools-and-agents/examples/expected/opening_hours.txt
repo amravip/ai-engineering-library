@@ -1,0 +1,4 @@
+Customer: What time do you open on Sunday?
+Bot (role only, no documents): We're open from **11:00 AM to 10:00 PM** on Sundays. Come enjoy some great pizza! 🍕
+
+Bot (told to say I don't know): I don't know.

@@ -1,0 +1,3 @@
+Customer: What did I order, and what is my name?
+Bot: Your order is a large pepperoni pizza, and your name is James.
+Tokens the model actually read (prompt_eval_count): 238

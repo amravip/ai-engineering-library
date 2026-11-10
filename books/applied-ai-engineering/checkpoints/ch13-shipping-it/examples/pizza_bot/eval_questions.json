@@ -1,0 +1,12 @@
+[
+  {"question": "What vegetarian pizzas do you have?", "must_include": ["Margherita", "Mushroom"], "must_not_include": ["Hawaiian", "BBQ"]},
+  {"question": "How much is a Meat Feast?", "must_include": ["£14"]},
+  {"question": "Which pizza has pineapple?", "must_include": ["Hawaiian"]},
+  {"question": "What time do you open on Sunday?", "must_include": ["12"]},
+  {"question": "How much does delivery cost?", "must_include": ["£3"]},
+  {"question": "Do you have gluten-free bases?", "must_include": ["not"], "must_not_include": ["Yes"]},
+  {"question": "Can I use two vouchers on one order?", "must_include": ["one"]},
+  {"question": "Where is my order #7?", "must_include": ["out for delivery"]},
+  {"question": "What is the total for order #3?", "must_include": ["11"]},
+  {"question": "Is order #99 on its way?", "must_include": ["99"], "must_not_include": ["out for delivery", "delivered"]}
+]

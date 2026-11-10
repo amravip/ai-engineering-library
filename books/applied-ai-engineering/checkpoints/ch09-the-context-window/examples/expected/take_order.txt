@@ -1,0 +1,9 @@
+Customer: Two large margheritas, no olives
+  Parsed: Order(pizza='Margheritas', size='large', quantity=2, notes='no olives')
+  Problems: ["'Margheritas' is not on the menu"]
+Customer: Can I get a medium Hawaiian?
+  Parsed: Order(pizza='Hawaiian', size='medium', quantity=1, notes='')
+  Problems: none
+Customer: One large Vegan Supreme please
+  Parsed: Order(pizza='Vegan Supreme', size='large', quantity=1, notes='')
+  Problems: ["'Vegan Supreme' is not on the menu"]

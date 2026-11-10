@@ -1,0 +1,22 @@
+Is the BBQ chicken hot ? it has chilli
+  hot looks at Is       0.04
+  hot looks at the      0.04
+  hot looks at BBQ      0.05
+  hot looks at chicken  0.04
+  hot looks at ?        0.04
+  hot looks at it       0.04
+  hot looks at has      0.04
+  hot looks at chilli   0.73
+  blended [spicy, temperature, delivery]: [2.2, 0.0, 0.0]
+
+Is the pizza hot ? it was an hour late
+  hot looks at Is       0.06
+  hot looks at the      0.06
+  hot looks at pizza    0.06
+  hot looks at ?        0.06
+  hot looks at it       0.06
+  hot looks at was      0.06
+  hot looks at an hour  0.41
+  hot looks at late     0.25
+  blended [spicy, temperature, delivery]: [0.0, 1.2, 0.91]
+

@@ -1,0 +1,21 @@
+Customer: Where is my order #7?
+  model asked for check_order({'order_number': 7})
+  tool returned {"number": 7, "pizzas": ["Pepperoni", "Margherita"], "total": 20, "status": "out for delivery"}
+Bot: Your order #7 has the following details:
+
+- **Pizzas:** Pepperoni, Margherita
+- **Total:** $20
+- **Status:** Out for delivery
+
+Enjoy your meal! 🍕
+
+Customer: Is order #99 on its way?
+  model asked for check_order({'order_number': 99})
+  tool returned {"error": "No order with number 99"}
+Bot: There is no order with the number 99. Please check the order number and try again.
+
+Customer: How many z's are in mozzarella?
+  model asked for count_letter({'text': 'mozzarella', 'letter': 'z'})
+  tool returned 2
+Bot: There are 2 z's in "mozzarella".
+

@@ -1,0 +1,9 @@
+1. One number per character
+   [84, 119, 111, 32, 77, 97, 114, 103, 104, 101, 114, 105, 116, 97, 115, 32, 112, 108, 101, 97, 115, 101]
+   numbers needed: 22
+
+2. One number per word, from a list of words we know
+   vocabulary: {'two': 0, 'margherita': 1, 'pepperoni': 2, 'please': 3, 'pizza': 4}
+   'two'           -> 0
+   'margheritas'   -> UNKNOWN
+   'please'        -> 3

@@ -1,0 +1,50 @@
+Raw, the bare question:
+ Also, what is the difference between a regular pizza and a vegetarian pizza? Are there any vegan options? What is the most popular pizza in the world? What is the difference between a pizza and a pizzetta? What is the difference between a pizza and a calzone? What is the difference
+
+Raw, the start of a document:
+Bella's Pizza menu
+
+Bella's Pizza is a small, family-run pizza shop in the heart of the city. The menu is simple, but the pizzas are made with fresh ingredients and are always hot and ready to eat. The menu includes a variety of toppings, and the prices are reasonable for the quality of the pizza
+
+Chat (template applied):
+We offer a variety of vegetarian pizzas that are delicious and satisfying! Here are some of our popular vegetarian pizza options:
+
+### 🍕 Vegetarian Pizza Options:
+
+1. **Classic Margherita Vegetarian**  
+   - Fresh mozzarella, ripe tomatoes, basil, and olive oil.  
+   - A simple, classic Italian favorite with a vegetarian twist.
+
+2. **Vegetable Medley**  
+   - A mix of bell peppers, mushrooms, onions, olives, and spinach.  
+   - Topped with mozzarella and fresh basil.
+
+3. **Mushroom & Spinach**  
+   - Sautéed mushrooms, fresh spinach, and a sprinkle of Parmesan.  
+   - Light and savory with a touch of umami.
+
+4. **Pesto & Sun-Dried Tomato**  
+   - Pesto base with sun-dried tomatoes, artichoke hearts, and mozzarella.  
+   - A colorful and flavorful option.
+
+5. **BBQ Veggie**  
+   - BBQ sauce, grilled bell peppers, onions, mushrooms, and mozzarella.  
+   - A smoky and sweet vegetarian delight.
+
+6. **Greek Veggie**  
+   - Feta cheese, kalamata olives, spinach, tomatoes, and oregano.  
+   - A Mediterranean-inspired flavor profile.
+
+7. **Vegan Veggie**  
+   - Made with a vegan cheese alternative, bell peppers, mushrooms, spinach, and tomatoes.  
+   - Perfect for plant-based diets.
+
+8. **Vegetable Supreme**  
+   - A loaded pizza with bell peppers, mushrooms, onions, green peppers, olives, and spinach.  
+   - A hearty and flavorful option.
+
+### 🍴 Customization:
+- You can also customize your pizza by adding or removing toppings.
+- We offer gluten-free crust options and vegan cheese alternatives.
+
+Would you like to try one of these, or would you prefer to build your own vegetarian pizza?

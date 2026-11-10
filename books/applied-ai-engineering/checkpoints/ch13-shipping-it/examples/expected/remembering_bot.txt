@@ -1,0 +1,4 @@
+Kept 9 of 16 messages.
+Customer: What did I order, and what is my name?
+Bot: You ordered two large Pepperoni pizzas. Your name is Priya.
+Tokens the model actually read (prompt_eval_count): 192

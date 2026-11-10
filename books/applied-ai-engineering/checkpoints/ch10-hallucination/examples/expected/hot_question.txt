@@ -1,0 +1,6 @@
+Customer: The BBQ Chicken has chilli on it. Is the BBQ Chicken hot?
+Model: In this context, "hot" means the BBQ Chicken has a spicy or fiery flavor due to the chilli.
+
+Customer: My pizza arrived an hour late. Is the pizza hot?
+Model: In this context, "hot" means the pizza is at a high temperature and ready to eat.
+

@@ -1,0 +1,14 @@
+Training text: 348 words
+First ten merges: [('h', 'e'), ('z', 'z'), ('zz', 'a'), ('t', 'he'), ('p', 'i'), ('pi', 'zza'), ('a', 's'), ('a', 'r'), ('a', 'n'), ('p', 'e')]
+
+pizza        -> ['pizza']
+margherita   -> ['margherita']
+mushroom     -> ['mushroom']
+pizzas       -> ['pizza', 's']
+mushrooms    -> ['mushroom', 's']
+margheritas  -> ['marghe', 'rit', 'as']
+spinach      -> ['s', 'pi', 'n', 'a', 'c', 'h']
+calzone      -> ['c', 'a', 'l', 'z', 'on', 'e']
+
+Vocabulary size: 76
+Two Margherita pizzas please -> [19, 22, 14, 70, 31, 18, 15, 11, 4, 32, 4]

@@ -1,0 +1,12 @@
+Question: Is there a coeliac-friendly option?
+  keywords : [('allergens.txt', 0), ('delivery.txt', 0)]
+  embedding: [('gluten_free.txt', 0.614), ('allergens.txt', 0.516)]
+Question: What if my food shows up freezing?
+  keywords : [('allergens.txt', 0), ('delivery.txt', 0)]
+  embedding: [('refunds.txt', 0.54), ('allergens.txt', 0.48)]
+Question: Can I use a coupon?
+  keywords : [('ingredients.txt', 1), ('allergens.txt', 0)]
+  embedding: [('vouchers.txt', 0.565), ('old_menu.txt', 0.465)]
+Question: When are you open on Sunday?
+  keywords : [('opening_hours.txt', 2), ('allergens.txt', 1)]
+  embedding: [('opening_hours.txt', 0.669), ('delivery.txt', 0.438)]
